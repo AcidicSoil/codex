@@ -17,6 +17,10 @@ patchedDependencies:
 importers:
 
   .:
+    dependencies:
+      '@openai/codex':
+        specifier: link:codex-cli
+        version: link:codex-cli
     devDependencies:
       git-cliff:
         specifier: ^2.8.0
