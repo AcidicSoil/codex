@@ -1,5 +1,30 @@
-# Rust/codex-rs
+# 🕹️ Codex Agent Contract (Node 22+)
 
-In the codex-rs folder where the rust code lives:
+## Contract: Task Completion
 
-- Never add or modify any code related to `CODEX_SANDBOX_NETWORK_DISABLED_ENV_VAR`. You operate in a sandbox where `CODEX_SANDBOX_NETWORK_DISABLED=1` will be set whenever you use the `shell` tool. Any existing code that uses `CODEX_SANDBOX_NETWORK_DISABLED_ENV_VAR` was authored with this fact in mind. It is often used to early exit out of tests that the author knew you would not be able to run given your sandbox limitations.
+A task is **complete** only when _all_ commands below exit 0.
+
+| Stage       | Command                 | Pass Criteria                 |
+| ----------- | ----------------------- | ----------------------------- |
+| Bootstrap   | `bash ./setup/entry.sh` | Script exits 0                |
+| Unit tests  | `pnpm test`             | Vitest passes (all green ✔︎) |
+| Type safety | `pnpm typecheck`        | No TypeScript errors          |
+| Style       | `pnpm run lint`         | ESLint & Prettier clean       |
+
+---
+
+## Rust/codex-rs
+
+In the `codex-rs` directory:
+
+- **Do not** add or modify any code related to `CODEX_SANDBOX_NETWORK_DISABLED_ENV_VAR`.
+- The sandbox sets `CODEX_SANDBOX_NETWORK_DISABLED=1` for any shell tool use.
+  If you see this env var in code/tests, it exists to skip tests that require outbound network access.
+
+---
+
+## Quickstart: One-liner for Humans
+
+```bash
+bash ./setup/entry.sh
+```
