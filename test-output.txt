@@ -1,0 +1,203 @@
+
+> codex-monorepo@ test C:\Users\comfy\Projects\codex
+> pnpm --filter @openai/codex run test
+
+
+> @openai/codex@0.0.0-dev test C:\Users\comfy\Projects\codex\codex-cli
+> vitest run
+
+
+[1m[46m RUN [49m[22m [36mv3.1.2 [39m[90mC:/Users/comfy/Projects/codex/codex-cli[39m
+
+ [32m✓[39m tests/text-buffer-word.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/text-buffer.test.ts [2m([22m[2m19 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m tests/text-buffer-gaps.test.ts [2m([22m[2m11 tests[22m[2m)[22m[32m 24[2mms[22m[39m
+ [32m✓[39m tests/responses-chat-completions.test.ts [2m([22m[2m6 tests[22m[2m)[22m[32m 153[2mms[22m[39m
+ [32m✓[39m tests/file-tag-utils.test.ts [2m([22m[2m20 tests[22m[2m)[22m[32m 39[2mms[22m[39m
+ [32m✓[39m tests/apply-patch.test.ts [2m([22m[2m16 tests[22m[2m | [22m[33m1 skipped[39m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/approvals.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/config_reasoning.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/config.test.tsx [2m([22m[2m9 tests[22m[2m)[22m[32m 5[2mms[22m[39m
+ [32m✓[39m tests/check-updates.test.ts [2m([22m[2m10 tests[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m tests/raw-exec-process-group.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/history-overlay.test.tsx [2m([22m[2m15 tests[22m[2m)[22m[32m 132[2mms[22m[39m
+ [31m❯[39m tests/file-system-suggestions.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 14[2mms[22m[39m
+   [32m✓[39m getFileSystemSuggestions[2m > [22mreturns empty array for empty prefix[32m 2[2mms[22m[39m
+[31m   [31m×[31m getFileSystemSuggestions[2m > [22mexpands ~ to home directory[39m[32m 7[2mms[22m[39m
+[31m     → expected "spy" to be called with arguments: [ '/home/testuser' ][90m
+
+Received: 
+
+[1m  1st spy call:
+
+[22m[2m  [[22m
+[32m-   "/home/testuser",[90m
+[31m+   ".",[90m
+[2m  ][22m
+[31m[90m
+
+Number of calls: [1m1[22m
+[31m[39m
+[31m   [31m×[31m getFileSystemSuggestions[2m > [22mfilters by prefix if not a directory[39m[32m 3[2mms[22m[39m
+[31m     → expected [ { path: 'abc.txt', …(1) }, …(1) ] to deeply equal [ { path: 'abc.txt', …(1) }, …(1) ][39m
+   [32m✓[39m getFileSystemSuggestions[2m > [22mhandles errors gracefully[32m 0[2mms[22m[39m
+[31m   [31m×[31m getFileSystemSuggestions[2m > [22mnormalizes relative path[39m[32m 1[2mms[22m[39m
+[31m     → expected [] to include 'foo/'[39m
+ [32m✓[39m tests/invalid-command-handling.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 15[2mms[22m[39m
+ [32m✓[39m tests/agent-rate-limit-error.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 12[2mms[22m[39m
+ [32m✓[39m tests/model-utils.test.ts [2m([22m[2m7 tests[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/agent-cancel-early.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 14[2mms[22m[39m
+ [32m✓[39m tests/token-streaming-performance.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/disableResponseStorage.agentLoop.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 11[2mms[22m[39m
+ [32m✓[39m tests/agent-interrupt-continue.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 13[2mms[22m[39m
+ [32m✓[39m tests/agent-cancel-race.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 55[2mms[22m[39m
+ [32m✓[39m tests/agent-thinking-time.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 20[2mms[22m[39m
+ [31m❯[39m tests/agent-project-doc.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 21[2mms[22m[39m
+[31m   [31m×[31m AgentLoop[2m > [22mpasses codex.md contents through the instructions parameter[39m[32m 20[2mms[22m[39m
+[31m     → Cannot read properties of undefined (reading 'completions')[39m
+ [32m✓[39m tests/agent-cancel-prev-response.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 49[2mms[22m[39m
+ [32m✓[39m tests/agent-max-tokens-error.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m tests/agent-dedupe-items.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m tests/agent-terminate.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 75[2mms[22m[39m
+ [32m✓[39m tests/agent-server-retry.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/agent-generic-network-error.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 52[2mms[22m[39m
+ [32m✓[39m tests/agent-network-errors.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 53[2mms[22m[39m
+ [32m✓[39m tests/agent-function-call-id.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 64[2mms[22m[39m
+ [32m✓[39m tests/agent-invalid-request-error.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m tests/agent-cancel.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 195[2mms[22m[39m
+ [32m✓[39m tests/model-utils-network-error.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 150[2mms[22m[39m
+ [31m❯[39m tests/package-manager-detector.test.ts [2m([22m[2m5 tests[22m[2m | [22m[31m3 failed[39m[2m)[22m[32m 11[2mms[22m[39m
+[31m   [31m×[31m detectInstallerByPath()[2m > [22mdetects npm when invoked from its global-bin[39m[32m 7[2mms[22m[39m
+[31m     → expected undefined to be 'npm' // Object.is equality[39m
+[31m   [31m×[31m detectInstallerByPath()[2m > [22mdetects pnpm when invoked from its global-bin[39m[32m 1[2mms[22m[39m
+[31m     → expected undefined to be 'pnpm' // Object.is equality[39m
+[31m   [31m×[31m detectInstallerByPath()[2m > [22mdetects bun when invoked from its global-bin[39m[32m 1[2mms[22m[39m
+[31m     → expected undefined to be 'bun' // Object.is equality[39m
+   [32m✓[39m detectInstallerByPath()[2m > [22mreturns undefined if argv[1] is missing[32m 1[2mms[22m[39m
+   [32m✓[39m detectInstallerByPath()[2m > [22mreturns undefined if shim isn't in any manager's bin[32m 0[2mms[22m[39m
+[90mstdout[2m | tests/multiline-dynamic-width.test.tsx[2m > [22m[2mMultilineTextEditor – dynamic width[2m > [22m[2mkeeps the caret visible when the terminal width shrinks
+[22m[39mFRAME AFTER RESIZE:
+hijklmnopqrstuvwxyz
+
+ [32m✓[39m tests/multiline-dynamic-width.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 36[2mms[22m[39m
+ [32m✓[39m tests/terminal-chat-model-selection.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 116[2mms[22m[39m
+ [32m✓[39m tests/create-truncating-collector.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/clear-command.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 58[2mms[22m[39m
+ [32m✓[39m tests/multiline-history-behavior.test.tsx [2m([22m[2m2 tests[22m[2m | [22m[33m1 skipped[39m[2m)[22m[32m 84[2mms[22m[39m
+ [32m✓[39m tests/typeahead-scroll.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 31[2mms[22m[39m
+ [32m✓[39m tests/terminal-chat-input-multiline.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 99[2mms[22m[39m
+ [32m✓[39m tests/project-doc.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 37[2mms[22m[39m
+ [31m❯[39m tests/markdown.test.tsx [2m([22m[2m6 tests[22m[2m | [22m[31m2 failed[39m[2m)[22m[32m 204[2mms[22m[39m
+   [32m✓[39m renders basic markdown[32m 34[2mms[22m[39m
+   [32m✓[39m ensure <Markdown> produces content with correct ANSI escape codes[2m > [22mrenders basic markdown with ansi[32m 62[2mms[22m[39m
+   [32m✓[39m ensure <Markdown> produces content with correct ANSI escape codes[2m > [22mbold test in a bullet should be rendered correctly[32m 4[2mms[22m[39m
+   [32m✓[39m ensure <Markdown> produces content with correct ANSI escape codes[2m > [22mensure simple nested list works as expected[32m 10[2mms[22m[39m
+[31m   [31m×[31m ensure <Markdown> produces content with correct ANSI escape codes[2m > [22mensure sequential subitems with styling to do not get extra newlines[39m[32m 88[2mms[22m[39m
+[31m     → expected '"\u001b[32m\u001b[1m## 🛠 Core CLI Lo…' to be '"\u001b[32m\u001b[1m## 🛠 Core CLI Lo…' // Object.is equality[39m
+[31m   [31m×[31m ensure <Markdown> produces content with correct ANSI escape codes[2m > [22mcitations should get converted to hyperlinks when stdout supports them[39m[32m 5[2mms[22m[39m
+[31m     → expected 'File with TODO: \u001b[34msrc/approva…' to be 'File with TODO: \u001b[34msrc/approva…' // Object.is equality[39m
+ [32m✓[39m tests/text-buffer-copy-paste.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 19[2mms[22m[39m
+ [31m❯[39m tests/user-config-env.test.ts [2m([22m[2m1 test[22m[2m | [22m[31m1 failed[39m[2m)[22m[32m 71[2mms[22m[39m
+[31m   [31m×[31m user‑wide ~/.codex.env support[2m > [22mloads the API key from ~/.codex.env when not set elsewhere[39m[32m 69[2mms[22m[39m
+[31m     → expected undefined to be 'my-home-key' // Object.is equality[39m
+ [32m✓[39m tests/terminal-chat-input-file-tag-suggestions.test.tsx [2m([22m[2m5 tests[22m[2m)[22m[32m 165[2mms[22m[39m
+[90mstdout[2m | tests/requires-shell.test.ts[2m > [22m[2mrequiresShell function[2m > [22m[2mshould detect pipe in a single argument
+[22m[39mParsing argument: "grep -n "finally:" some-file | head", tokens: [
+  "grep",
+  "-n",
+  "finally:",
+  "some-file",
+  {
+    "op": "|"
+  },
+  "head"
+]
+
+[90mstdout[2m | tests/requires-shell.test.ts[2m > [22m[2mrequiresShell function[2m > [22m[2mshould not detect pipe in separate arguments
+[22m[39mParsing argument: "grep", tokens: [
+  "grep"
+]
+Parsing argument: "-n", tokens: [
+  "-n"
+]
+Parsing argument: "finally:", tokens: [
+  "finally:"
+]
+Parsing argument: "some-file", tokens: [
+  "some-file"
+]
+Parsing argument: "|", tokens: [
+  {
+    "op": "|"
+  }
+]
+Parsing argument: "head", tokens: [
+  "head"
+]
+Result for separate arguments: false
+Result for separate arguments: [33mfalse[39m
+
+[90mstdout[2m | tests/requires-shell.test.ts[2m > [22m[2mrequiresShell function[2m > [22m[2mshould handle other shell operators
+[22m[39mParsing argument: "echo hello && echo world", tokens: [
+  "echo",
+  "hello",
+  {
+    "op": "&&"
+  },
+  "echo",
+  "world"
+]
+
+ [32m✓[39m tests/requires-shell.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/slash-commands.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+ [32m✓[39m tests/fixed-requires-shell.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/input-utils.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 7[2mms[22m[39m
+ [32m✓[39m tests/parse-apply-patch.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 4[2mms[22m[39m
+ [32m✓[39m tests/disableResponseStorage.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/cancel-exec.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 100[2mms[22m[39m
+ [32m✓[39m tests/api-key.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 34[2mms[22m[39m
+ [32m✓[39m tests/exec-apply-patch.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 9[2mms[22m[39m
+ [32m✓[39m tests/format-command.test.ts [2m([22m[2m3 tests[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/model-info.test.ts [2m([22m[2m2 tests[22m[2m)[22m[32m 6[2mms[22m[39m
+[90mstdout[2m | tests/pipe-command.test.ts[2m > [22m[2mshell-quote parse with pipes[2m > [22m[2mshould correctly parse a command with a pipe
+[22m[39mParsed tokens: [
+  "grep",
+  "-n",
+  "finally:",
+  "some-file",
+  {
+    "op": "|"
+  },
+  "head"
+]
+
+ [32m✓[39m tests/pipe-command.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 3[2mms[22m[39m
+ [32m✓[39m tests/text-buffer-crlf.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m tests/dummy.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 2[2mms[22m[39m
+ [32m✓[39m tests/get-diff-special-chars.test.ts [2m([22m[2m1 test[22m[2m)[22m[32m 244[2mms[22m[39m
+[90mstdout[2m | tests/multiline-newline.test.tsx[2m > [22m[2mMultilineTextEditor – inserting new lines[2m > [22m[2msplits the line and renders the new row when <Enter> is pressed
+[22m[39m
+--- RENDERED FRAME ---
+hello
+world
+---------------------
+
+ [32m✓[39m tests/multiline-newline.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m tests/terminal-chat-completions.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 16[2mms[22m[39m
+ [32m✓[39m tests/multiline-ctrl-enter-submit.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 23[2mms[22m[39m
+ [32m✓[39m tests/multiline-shift-enter-crlf.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 29[2mms[22m[39m
+ [32m✓[39m tests/multiline-shift-enter-mod1.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 26[2mms[22m[39m
+ [32m✓[39m tests/multiline-shift-enter.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 25[2mms[22m[39m
+ [32m✓[39m tests/multiline-enter-submit-cr.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 21[2mms[22m[39m
+ [32m✓[39m tests/terminal-chat-input-compact.test.tsx [2m([22m[2m1 test[22m[2m)[22m[32m 20[2mms[22m[39m
+ [32m✓[39m tests/terminal-chat-response-item.test.tsx [2m([22m[2m2 tests[22m[2m)[22m[32m 22[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m5 failed[39m[22m[2m | [22m[1m[32m66 passed[39m[22m[90m (71)[39m
+[2m      Tests [22m [1m[31m10 failed[39m[22m[2m | [22m[1m[32m235 passed[39m[22m[2m | [22m[33m2 skipped[39m[90m (247)[39m
+[2m   Start at [22m 09:03:20
+[2m   Duration [22m 2.85s[2m (transform 3.91s, setup 0ms, collect 36.78s, tests 3.02s, environment 14ms, prepare 12.48s)[22m
+
+C:\Users\comfy\Projects\codex\codex-cli:
+ ERR_PNPM_RECURSIVE_RUN_FIRST_FAIL  @openai/codex@0.0.0-dev test: `vitest run`
+Exit status 1
+ ELIFECYCLE  Test failed. See above for more details.
