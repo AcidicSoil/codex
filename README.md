@@ -106,8 +106,35 @@ export OPENAI_API_KEY="your-api-key-here"
 > - xai
 > - groq
 > - arceeai
+> - qwen3 (via AcidicSoil/codex middleware)
 > - any other provider that is compatible with the OpenAI API
 >
+Using Qwen3 requires running Codex with the Qwen3 LLM and enabling tool calls.
+Below is a minimal example payload for the `/v1/chat/completions` endpoint:
+
+```json
+{
+  "model": "qwen/qwen3-4b",
+  "messages": [{ "role": "user", "content": "What's the weather in Tokyo?" }],
+  "tools": [
+    {
+      "type": "function",
+      "function": {
+        "name": "get_weather",
+        "parameters": {
+          "type": "object",
+          "properties": {
+            "location": { "type": "string" },
+            "unit": { "type": "string", "enum": ["celsius", "fahrenheit"] }
+          },
+          "required": ["location"]
+        }
+      }
+    }
+  ],
+  "tool_choice": "auto"
+}
+```
 > If you use a provider other than OpenAI, you will need to set the API key for the provider in the config file or in the environment variable as:
 >
 > ```shell
