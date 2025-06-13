@@ -1,3 +1,4 @@
+# setup/entry.sh
 #!/usr/bin/env bash
 set -euo pipefail
 NODE_VERSION="${NODE_VERSION:-22}"        # override: export NODE_VERSION=24
