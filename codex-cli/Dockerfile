@@ -1,4 +1,4 @@
-FROM node:20-slim
+FROM ubuntu:22.04
 
 ARG TZ
 ENV TZ="$TZ"
@@ -6,6 +6,7 @@ ENV TZ="$TZ"
 # Install basic development tools, ca-certificates, and iptables/ipset, then clean up apt cache to reduce image size
 RUN apt-get update && apt-get install -y --no-install-recommends \
   aggregate \
+  bash \
   ca-certificates \
   curl \
   dnsutils \
@@ -53,7 +54,11 @@ ENV CODEX_UNSAFE_ALLOW_NO_SANDBOX=1
 # Copy and set up firewall script as root.
 USER root
 COPY scripts/init_firewall.sh /usr/local/bin/
-RUN chmod 500 /usr/local/bin/init_firewall.sh
+RUN chmod +x /usr/local/bin/init_firewall.sh && \
+    sed -i 's/\r$//' /usr/local/bin/init_firewall.sh
+
+# Create sandbox flag file (required by latest Codex versions)
+RUN mkdir -p /etc/codex/sandbox && touch /etc/codex/sandbox/enabled
 
 # Drop back to non-root.
 USER node
