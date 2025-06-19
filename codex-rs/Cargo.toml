@@ -8,6 +8,7 @@ members = [
     "core",
     "exec",
     "execpolicy",
+    "http-server",
     "linux-sandbox",
     "login",
     "mcp-client",
